@@ -310,13 +310,18 @@ class App(tk.Tk):
     def _update_stats(self, algorithm, elapsed,
                       nodes, path_len, extra) -> None:
         found = path_len > 0
-        optimal_algos = {"BFS", "A* (Manhattan)"}
+        optimality = {
+            "BFS": "Yes",
+            "DFS": "No",
+            "A* (Manhattan)": "Yes",
+            "Weighted A*": "Depends on w",
+        }
         self.stats.update(
             algorithm=algorithm,
             time_ms=f"{elapsed:.2f}",
             nodes=nodes,
             path_len=path_len if found else "N/A",
-            optimal="Yes" if algorithm in optimal_algos else "Depends on w",
+            optimal=optimality.get(algorithm, "Unknown"),
             status="Found" if found else "No path",
         )
 
