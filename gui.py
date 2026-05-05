@@ -258,10 +258,7 @@ class App(tk.Tk):
                            explored, path, algorithm, elapsed, stats, delay_ms, 0)
 
         except NotImplementedError:
-            self.after(0, messagebox.showwarning,
-                       "Backend Missing",
-                       "solver.py is not connected yet.\n"
-                       "Ask Cristian to wire up solve().")
+            self.after(0, messagebox.showwarning)
             self.after(0, self._finish_solve)
         except Exception as exc:
             self.after(0, messagebox.showerror, "Error", str(exc))
